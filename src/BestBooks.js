@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
-import bookMockup from './img/book-mockup.jpg'
+import bookMockup from './img/book-mockup.jpg';
 
 class BestBooks extends React.Component {
-  
+
   constructor(props){
     super(props);
     this.state = {
@@ -14,7 +14,6 @@ class BestBooks extends React.Component {
 
   getBooks = async() => {
     try{
-      
       let bookData = await axios.get(`${process.env.REACT_APP_SERVER}/books`);
       this.setState({
         books: bookData.data
@@ -30,19 +29,19 @@ class BestBooks extends React.Component {
 
   render() {
     let books = this.state.books.map(book => (
-        <Carousel.Item key={book._id}>
-          <img
-            className={book._id}
-            src={bookMockup}
-            alt={book.name}
-            width="600"
-          />
-          <Carousel.Caption>
-            <h3>{book.name}</h3>
-            <p>{book.description}</p>
-            <p>{book.status}</p>
-          </Carousel.Caption>
-        </Carousel.Item>
+      <Carousel.Item key={book._id}>
+        <img
+          className={book._id}
+          src={bookMockup}
+          alt={book.name}
+          width="600"
+        />
+        <Carousel.Caption>
+          <h3>{book.name}</h3>
+          <p>{book.description}</p>
+          <p>{book.status}</p>
+        </Carousel.Caption>
+      </Carousel.Item>
     ));
     return (
       <>
