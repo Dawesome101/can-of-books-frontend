@@ -12,31 +12,7 @@ import {
 
 class App extends React.Component {
 
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     books: [],
-  //   }
-  // }
-
-  // getBooks = async() => {
-  //   try{
-  //     let bookData = await axios.get(`${process.env.REACT_APP_SERVER}/books`);
-  //     this.setState({
-  //       books: bookData.data,
-  //     })
-  //   } catch(error){
-  //     console.log('We have an error: ', error.response);
-  //   }
-  // }
-
-  // componentDidMount(){
-  //   this.getBooks();
-  // }
-
   render() {
-    //console.log(this.state.books);
-
     return (
       <>
         <Router>
