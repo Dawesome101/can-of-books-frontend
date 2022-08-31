@@ -104,7 +104,7 @@ Actual time needed to complete: 4 hours
 -----------------------------------------------------------
 Monday August 30, 2022
 
-Name of feature: Building CRUD apps with MongoDB
+Name of feature: Added Get, Post, Delete functionality between front end and back end.
 
 Estimate of time needed to complete: 6hrs
 
