@@ -47,7 +47,7 @@ class App extends React.Component {
 	}
 
 	removeDeletedBook = (books) => {
-		// console.log(books)
+		console.log('deletecall' + books)
 		this.setState({
 			books: books
 		})
