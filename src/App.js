@@ -21,12 +21,12 @@ class App extends React.Component {
 		this.state = {
 			showModal: false,
 			books: [],
-
 		}
 	}
 
   getBooks = async() => {
     try{
+			console.log('updated');
       let bookData = await axios.get(`${process.env.REACT_APP_SERVER}/books`);
       this.setState({
         books: bookData.data
@@ -44,10 +44,10 @@ class App extends React.Component {
 		this.setState({
 			books: [...this.state.books, book]
 		})
+		this.getBooks();
 	}
 
 	removeDeletedBook = (books) => {
-		console.log('deletecall' + books)
 		this.setState({
 			books: books
 		})
@@ -60,17 +60,21 @@ class App extends React.Component {
 		})
 
 	}
+
 	handleCloseModal = (event) => {
 		event.preventDefault();
 		this.setState({
 			showModal: false
 		})
 	}
+
 	render() {
 		return (
-			<>
+			<div className='div-main'>
+
 				<Router>
-					<Header />
+
+					<Header className='header' />
 					<h1>Super Rad Books!</h1>
 
 					<BookFormModal 
@@ -78,21 +82,24 @@ class App extends React.Component {
 					handleCloseModal={this.handleCloseModal} updateBookState={this.updateBookState}/>
 						
 					<span className='route-span'>
-
+						
 						<Routes>
 								<Route
 									exact path="/"
 									element={<BestBooks 
 									books={this.state.books}
 									removeDeletedBook={this.removeDeletedBook}
+									getBooks={this.getBooks}
 									/>}
 								>
 								</Route>
+
 							<Route
 								exact path="about"
 								element={<About />}
 								>
 							</Route>
+
 						</Routes>
 
 					</span>
@@ -100,9 +107,12 @@ class App extends React.Component {
 					<Button 
 					variant="success" 
 					onClick={this.handleShowModal}>Add Book</Button>{''}
+					
 					<Footer />
+
 				</Router>
-			</>
+
+			</div>
 		);
 	}
 }
