@@ -7,16 +7,12 @@ import axios from "axios";
 class BookFormModal extends React.Component {
 
 handleCreateBook = async (bookInfo) => {
-	console.log(bookInfo);
+	
 	try {
 		const response = await axios.post(`${process.env.REACT_APP_SERVER}/books`, bookInfo);
 		const newBook = response.data;
 		console.log('were looking for this' + newBook);
 		this.props.updateBookState(newBook);
-		// console.log('after' + newBook);
-		// this.setState({
-		// 	books: [...this.state.books, newBook]
-		// })
 	} catch (error){
 		console.log('error is book post: ', error.response)
 	}

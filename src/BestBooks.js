@@ -3,6 +3,7 @@ import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 import bookMockup from './img/book-mockup.jpg';
 import Button from 'react-bootstrap/Button';
+import './BeskBooks.css';
 
 
 class BestBooks extends React.Component {
@@ -15,6 +16,7 @@ class BestBooks extends React.Component {
 				return book._id !== bookToDelete._id;
 			})
 			this.props.removeDeletedBook(filteredBooks);
+      this.props.getBooks();
 		} catch(error){
 		console.log(error)
 		}
@@ -26,21 +28,24 @@ class BestBooks extends React.Component {
         <img
           className={book._id}
           src={bookMockup}
-          alt={book.name}
+          alt={book.title}
         />
-        <Carousel.Caption>
-          <h3>{book.name}</h3>
+
+        <Carousel.Caption className='carousel-capt'>
+          <p>{book.title}</p>
           <p>{book.description}</p>
-          <p>{book.status}</p>
-				<Button 
+          
+        <Button className='delete-btn'
 				variant="secondary" 
 				onClick={() => this.handleDelete(book)} >Delete Book</Button>
+
         </Carousel.Caption>
+
       </Carousel.Item>
-			
     ));
     return (
       <>
+
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
 
         {this.props.books.length ? (
@@ -50,6 +55,7 @@ class BestBooks extends React.Component {
         ) : (
           <h3>No Books Found :(</h3>
         )}
+
       </>
     );
   }
