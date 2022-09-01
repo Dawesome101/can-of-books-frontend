@@ -4,6 +4,7 @@ import Footer from './Footer.js';
 import About from './About.js';
 import BestBooks from './BestBooks.js';
 import BookFormModal from './BookFormModal.js';
+import BookUpdateModal from './BookUpdateModal.js';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -15,12 +16,13 @@ import {
 } from 'react-router-dom';
 
 class App extends React.Component {
-
 	constructor(props) {
 		super(props);
 		this.state = {
 			showModal: false,
+			showUpdateModal: false,
 			books: [],
+			book: {},
 		}
 	}
 
@@ -47,24 +49,40 @@ class App extends React.Component {
 		this.getBooks();
 	}
 
-	removeDeletedBook = (books) => {
+	removeDeletedBook = (filteredBooks) => {
+		this.setState({
+			books: filteredBooks
+		})
+	}
+
+	updatedBookArray = (books) => {
 		this.setState({
 			books: books
 		})
 	}
 
-	handleShowModal = (event) => {
-		event.preventDefault();
+	handleShowModal = () => {
 		this.setState({
 			showModal: true
 		})
-
 	}
 
-	handleCloseModal = (event) => {
-		event.preventDefault();
+	handleCloseModal = () => {
 		this.setState({
 			showModal: false
+		})
+	}
+
+	handleShowUpdateModal = (book) => {
+		this.setState({
+			book: book,
+			showUpdateModal: true
+		})
+	}
+
+	handleCloseUpdateModal = () => {
+		this.setState({
+			showUpdateModal: false
 		})
 	}
 
@@ -79,21 +97,29 @@ class App extends React.Component {
 
 					<BookFormModal 
 					showModal={this.state.showModal} 
-					handleCloseModal={this.handleCloseModal} updateBookState={this.updateBookState}/>
+					handleCloseModal={this.handleCloseModal} 
+					updateBookState={this.updateBookState}/>
 						
+					<BookUpdateModal 
+					showUpdateModal={this.state.showUpdateModal}
+					handleCloseUpdateModal={this.handleCloseUpdateModal}
+					updatedBookArray={this.updatedBookArray}
+					books={this.state.books}
+					book={this.state.book}/>
+
 					<span className='route-span'>
 						
 						<Routes>
 								<Route
 									exact path="/"
 									element={<BestBooks 
-									books={this.state.books}
-									removeDeletedBook={this.removeDeletedBook}
-									getBooks={this.getBooks}
+										books={this.state.books}
+										removeDeletedBook={this.removeDeletedBook}
+										getBooks={this.getBooks}
+										handleShowUpdateModal={this.handleShowUpdateModal}
 									/>}
 								>
 								</Route>
-
 							<Route
 								exact path="about"
 								element={<About />}

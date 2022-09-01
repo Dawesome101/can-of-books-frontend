@@ -1,7 +1,7 @@
 # Project Name
 
 Authors: Dan Awesome & Tyler Main
-**Version**: 1.0.2
+**Version**: 1.0.3
 
 ## Overview
 
@@ -23,7 +23,8 @@ Node.js
 ## Change Log
 
 08-29-2022 8:21pm - Application now has a fully-functional express server, with a GET route for the location resource. Carousel implemented to show database books.
-08-23-2022 8:26pm - Added Get, Post, Delete functionality between front end and back end.
+08-30-2022 8:26pm - Added Get, Post, Delete functionality between front end and back end.
+08-31-2022 6:04pm - Added a new form control for updating information on specified books and cleaned up code to be free of comments and unnecessary console logging"
 
 ## Credit and Collaborations
 https://mongoosejs.com/docs
@@ -117,40 +118,12 @@ Actual time needed to complete: 7hrs
 -----------------------------------------------------------
 Wednesday August 31, 2022
 
-Name of feature: Building CRUD apps with MongoDB
+Name of feature: Added Update Function
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 4hrs
 
-Start time: 
+Start time: 2:10pm
 
-Finish time: 
+Finish time: 6:06pm
 
-Actual time needed to complete: 
-
------------------------------------------------------------
-Thursday September 1, 2022
-
-Name of feature: Building CRUD apps with MongoDB
-
-Estimate of time needed to complete: 
-
-Start time: 
-
-Finish time: 
-
-Actual time needed to complete: 
-
------------------------------------------------------------
-Friday September 2, 2022
-
-Name of feature: Building CRUD apps with MongoDB
-
-Estimate of time needed to complete: 
-
-Start time: 
-
-Finish time: 
-
-Actual time needed to complete: 
-
------------------------------------------------------------
+Actual time needed to complete: 4hrs 4mins
