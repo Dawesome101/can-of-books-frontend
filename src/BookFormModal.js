@@ -11,7 +11,6 @@ handleCreateBook = async (bookInfo) => {
 	try {
 		const response = await axios.post(`${process.env.REACT_APP_SERVER}/books`, bookInfo);
 		const newBook = response.data;
-		console.log('were looking for this' + newBook);
 		this.props.updateBookState(newBook);
 	} catch (error){
 		console.log('error is book post: ', error.response)
